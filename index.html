@@ -36,13 +36,15 @@ p{margin:6px 0 0 18px}
 
 </table>
 <script>
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
 document.querySelectorAll('details').forEach(function(d){
   d.addEventListener('toggle',function(){
     if(!d.open||!window.speechSynthesis)return;
     var w=d.querySelector('summary').textContent.trim();
     speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.8;
-    var v=speechSynthesis.getVoices().find(function(x){return x.lang.indexOf('en')===0});
+    var vs=speechSynthesis.getVoices();
+    var v=vs.find(function(x){return /en[-_]US/i.test(x.lang)&&/google|samantha|natural/i.test(x.name)})||vs.find(function(x){return /en[-_]US/i.test(x.lang)});
     if(v)u.voice=v;
     speechSynthesis.speak(u);
   });
