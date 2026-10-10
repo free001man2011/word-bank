@@ -41,7 +41,7 @@ document.querySelectorAll('details').forEach(function(d){
   d.addEventListener('toggle',function(){
     if(!d.open)return;
     var w=d.querySelector('summary').textContent.trim();
-    var a=new Audio('audio/'+w+'.mp3');
+    var a=new Audio('audio/'+w+'-us.mp3');
     a.play().catch(function(){speakTTS(w);});
     return;
   });
