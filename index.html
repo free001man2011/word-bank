@@ -35,5 +35,18 @@ p{margin:6px 0 0 18px}
 </details></td></tr>
 
 </table>
+<script>
+document.querySelectorAll('details').forEach(function(d){
+  d.addEventListener('toggle',function(){
+    if(!d.open||!window.speechSynthesis)return;
+    var w=d.querySelector('summary').textContent.trim();
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.8;
+    var v=speechSynthesis.getVoices().find(function(x){return x.lang.indexOf('en')===0});
+    if(v)u.voice=v;
+    speechSynthesis.speak(u);
+  });
+});
+</script>
 </body>
 </html>
