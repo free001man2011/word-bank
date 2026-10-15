@@ -58,7 +58,7 @@ function speakTTS(w){
     speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.8;
     var vs=speechSynthesis.getVoices();
-    var v=vs.find(function(x){return /en[-_]US/i.test(x.lang)&&/google|samantha|natural/i.test(x.name)})||vs.find(function(x){return /en[-_]US/i.test(x.lang)});
+    var v=vs.find(function(x){return /en[-_]US/i.test(x.lang)&&/guy|male|david|mark|alex|fred|aaron/i.test(x.name)&&!/female/i.test(x.name)})||vs.find(function(x){return /en[-_]US/i.test(x.lang)});
     if(v)u.voice=v;
     speechSynthesis.speak(u);
 }
