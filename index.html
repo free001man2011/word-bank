@@ -71,7 +71,7 @@ document.querySelectorAll('details').forEach(function(d){
   d.addEventListener('toggle',function(){
     if(!d.open)return;
     var w=d.querySelector('summary').textContent.trim();
-    var a=new Audio('audio/'+w+'-us.mp3');
+    var a=new Audio('audio/'+w+'-v2.mp3');
     a.play().catch(function(){speakTTS(w);});
     return;
   });
@@ -79,7 +79,7 @@ document.querySelectorAll('details').forEach(function(d){
 document.querySelectorAll('.say').forEach(function(a){
   a.addEventListener('click',function(e){
     e.preventDefault();var w=a.getAttribute('data-w');
-    new Audio('audio/'+w+'-us.mp3').play().catch(function(){speakTTS(w);});
+    new Audio('audio/'+w+'-v2.mp3').play().catch(function(){speakTTS(w);});
   });
 });
 function speakTTS(w){
